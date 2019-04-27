@@ -1,4 +1,4 @@
-import {default as Web3} from 'web3'
+const Web3 = require("web3");
 
 let getWeb3 = () => {
   window.addEventListener('load', () => {
