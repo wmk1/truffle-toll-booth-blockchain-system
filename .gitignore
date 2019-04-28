@@ -4,3 +4,4 @@ xxx
 node_modules
 .history
 .vscode/
+script/index.js
