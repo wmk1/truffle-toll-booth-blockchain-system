@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toll booth operator app</title>
+</head>
+<body>
+  <script src="../script/app.js" type="text/javascript"></script>
+  <script src="./scripts/index.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <span id="status"></span>
+  <h1>ETH-26 - Toll booth operator project</h1>
+  <h3>Important information:</span></h3>
+  <h3>Vehicle types:</h3>
+  <h4>0 - not a vehicle</h4>
+  <h4>1 - motorbike</h4>
+  <h4>2 - car</h4>
+  <h4>3 - truck</h4>
+
+  <div id="regulator" class="container">
+    <h3>Regulator</h3>
+    <h4>Set vehicle type</h4>
+    <br><label for="vehicleType">Vehicle type: </label><input type="text" id="vehicleType" placeholder="1, 2, 3"></input>
+    <br>
+    <br><label for="address">To address: </label><input type="text" id="address" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br>
+    <button class="tablinks" onclick="App.changeVehicleType()">Set vehicle type</button>
+    <h4>Create new operator</h4>
+    <br><label for="newOperatorAddress">Operator address: </label><input type="text" id="newOperatorAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br>
+    <br><label for="deposit">Deposit: </label><input type="text" id="deposit" placeholder="Default deposited weis"></input>
+    <br>
+    <button class="tablinks" onclick=App.createNewOperator()>Create new operator</button>
+
+  </div>
+  
+  <div id="tollBoothOperator" class="tabcontent">
+    <h3>Toll booth operator</h3>
+    <h4>Add toll booth</h4>
+    <br><label for="createdTollBooth">New toll booth address: </label><input type="text" id="createdTollBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br>
+    <button class="tablinks" onclick="App.addTollBooth">Add toll booth</button>
+    <br>
+    <h4>Change route price</h4>
+    <br><label for="entryBooth">Entry booth: </label><input type="text" id="entryBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br>
+    <br><label for="exitBooth">Exit booth: </label><input type="text" id="exitBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br>
+    <button class="tablinks" onclick=App.setRoutePrice()>Set route price</button>
+  </div>
+  
+  <div id="individualVehicles" class="tabcontent">
+    <h3>Individual vehicles</h3>
+    <h4>Individual vehicles content</h4>
+    <p>Address balance: </p>
+    <br>
+    <br><label for="individualVehicleAddress">Individual vehicle address: </label><input type="text" id="individualVehicleAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <button class="tablinks" onclick=App.checkBalance()>See address balance </button>
+  </div>
+
+  <div id="individualTollBooths" class="tabcontent">
+    <h3>Individual toll booth operators</h3>
+    <p>Report exit road</p>
+    <br><label for="individualVehicleAddress">Individual vehicle address: </label><input type="text" id="individualVehicleAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <button class="tablinks" onclick=App.reportVehicleExit()>Report exit road</button>
+
+  </div>
+  <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
+</body>
+</html>
