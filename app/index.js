@@ -6,32 +6,30 @@ import tollBoothOperatorArtifacts from '../build/contracts/TollBoothOperator.jso
 
 const App = {
   web3: null,
-  account: null,
+  accounts: null,
   regulator: null,
   tollBoothOperator: null,
 
   start: async () => {
-    console.log(1)
     const { web3 } = App
-    console.log('web3web3', web3)
-    console.log(2)
     try {
       const networkId = await web3.eth.net.getId()
-      console.log('networkId', networkId)
       const deployedNetwork = regulatorArtifacts.networks[networkId]
-      this.regulator = new web3.eth.Contract(
-      regulatorArtifacts.abi,
-      deployedNetwork.address
-    )
-      this.tollBoothOperator = new web3.eth.Contract(
-      tollBoothOperatorArtifacts.abi,
-      deployedNetwork.address
-    )
-    console.log('regulator')
-    console.log(regulator)
+      App.accounts = await web3.eth.getAccounts()
+      console.log('App accounts', App.accounts)
+      console.log(deployedNetwork)
+      App.regulator = new web3.eth.Contract(
+        regulatorArtifacts.abi,
+        deployedNetwork.address
+      ),
+      App.tollBoothOperator = new web3.eth.Contract(
+        tollBoothOperatorArtifacts.abi,
+        deployedNetwork.address
+      )
+      console.log(App.regulator)
     } catch (error) {
-      console.error('Something aint right yo')
-      console.error(error)
+        App.setStatus(error)
+        console.error(error)
     }
   },
 
@@ -40,14 +38,18 @@ const App = {
   },
 
   changeVehicleType: async () => {
-    const { setVehicleType } = this.regulator.methods
-    let vehicleType = parseInt(document.getElementById('vehicleType').value)
-    let recipient = document.getElementById('address').value
-    await setVehicleType(vehicleType, recipient).send({ from: this.account }) 
+    const { setVehicleType } = App.regulator.methods
+    console.log('set vehicle type', setVehicleType)
+    
+    let vehicleType = parseInt(document.getElementById("vehicleType").value)
+    let recipient = document.getElementById("address").value
+    console.log('checking values', vehicleType, recipient)
+    App.setStatus("Changing vehicle type...")
+    await setVehicleType(vehicleType, recipient).send({ from: App.accounts[0] }) 
   },
 
   updateRoutePrice: async () => {
-    const { setRoutePrice } = this.regulator.methods
+    const { setRoutePrice } = App.regulator.methods
 
     const entryBooth = document.getElementById('entryBooth').value
     const exitBooth = document.getElementById('exitBooth').value
@@ -62,12 +64,13 @@ const App = {
     await reportExitRoad(individualVehicleAddress).send({ from: this.account })
   },
 
-  setStatus: (message) => {
+  setStatus: async (message) => {
     const status = document.getElementById('status')
     status.innerHTML = message
   },
 
   createNewOperator: async() => {
+    const { createNewOperator } = App.regulator.methods
     const operatorAddress = document.getElementById('receiver').value
     const operatorDeposit = parseInt(document.getElementById('operatorDeposit').value)
   }

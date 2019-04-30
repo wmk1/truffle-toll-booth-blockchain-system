@@ -3,16 +3,16 @@ const TollBoothOperator = artifacts.require('./TolLBoothOperator.sol')
 
 const depositWei = 100
 
-module.exports = (deployer, network, accounts) => {
-  return deployer.deploy(Regulator, {
-    from: accounts[0]
-  }).then(() => {
-    return Regulator.deployed()
-  }).then(regulator => {
-    return regulator.createNewOperator(accounts[1], depositWei, { from: accounts[0] });
-  }).then((transaction) => {
-    return TollBoothOperator.at(transaction.logs[1].args.newOperator);
-  }).then((tollBoothOperator) => {
-    return tollBoothOperator.setPaused(false, { from: accounts[1] });
-  })
-}
+module.exports = (deployer, network, accounts) => deployer.then(async() => {
+	const [regulatorOwner, operatorOwner] = accounts
+  
+	await deployer.deploy(Regulator, { from: regulatorOwner })
+
+	const regulator = await Regulator.at(Regulator.address)
+	const tx = await regulator.createNewOperator(operatorOwner, 100, { from: regulatorOwner })
+	const op = await TollBoothOperator.at(tx.logs.find(l => l.event === 'LogTollBoothOperatorCreated').args.newOperator)
+  console.log('SMERFNE HITY', regulator)
+  console.log('accounts', accounts)
+	await op.setPaused(false, { from: operatorOwner })
+})
+
