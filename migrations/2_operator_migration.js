@@ -5,7 +5,6 @@ const depositWei = 100
 
 module.exports = (deployer, network, accounts) => deployer.then(async() => {
 	const [regulatorOwner, operatorOwner] = accounts
-  
 	await deployer.deploy(Regulator, { from: regulatorOwner })
 
 	const regulator = await Regulator.at(Regulator.address)

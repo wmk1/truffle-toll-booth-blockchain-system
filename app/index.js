@@ -1,5 +1,4 @@
 import Web3 from "web3"
-import getWeb3 from "./scripts/getWeb3"
 
 import regulatorArtifacts from '../build/contracts/Regulator.json'
 import tollBoothOperatorArtifacts from '../build/contracts/TollBoothOperator.json'
@@ -16,9 +15,8 @@ const App = {
       const networkId = await web3.eth.net.getId()
       const deployedNetwork = regulatorArtifacts.networks[networkId]
       App.accounts = await web3.eth.getAccounts()
-      console.log('App accounts', App.accounts)
-      console.log(deployedNetwork)
-      App.regulator = new web3.eth.Contract(
+      web3.eth.defaultAccount = App.accounts[0]
+      App.regulator = await new web3.eth.Contract(
         regulatorArtifacts.abi,
         deployedNetwork.address
       ),
@@ -27,6 +25,7 @@ const App = {
         deployedNetwork.address
       )
       console.log(App.regulator)
+      console.log(App.tollBoothOperator)
     } catch (error) {
         App.setStatus(error)
         console.error(error)
