@@ -7051,10 +7051,780 @@
         }
       },
       "links": {},
-      "address": "0xBa2b322d8175fa813afdCf6c632Aba0af30588C4",
+      "address": "0x40c9e90eb7D7Cc2A3177a57C08E371c60d29cAe0",
+      "transactionHash": "0x5b98fac74141a6fe40cce3b7e918f38e11def68742be11e26c2bf830ffb37633"
+    },
+    "1557152370294": {
+      "events": {
+        "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogVehicleTypeSet",
+          "type": "event",
+          "signature": "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce"
+        },
+        "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothOperatorRemoved",
+          "type": "event",
+          "signature": "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295"
+        },
+        "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOperator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "depositWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogTollBoothOperatorCreated",
+          "type": "event",
+          "signature": "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0x4CAb09a82cC807584168a28D19fc62a1fA5C0c1d",
+      "transactionHash": "0x1868d0e327faeb2494d0a479b28dedd4b7f4de7d6b142c3e69f96c1dc8d928b8"
+    },
+    "1557221757418": {
+      "events": {
+        "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogVehicleTypeSet",
+          "type": "event",
+          "signature": "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce"
+        },
+        "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothOperatorRemoved",
+          "type": "event",
+          "signature": "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295"
+        },
+        "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOperator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "depositWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogTollBoothOperatorCreated",
+          "type": "event",
+          "signature": "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0x015Ff00d4d44972dEEBc2554c2570c817c8D957D",
+      "transactionHash": "0x39637b5e40153c721736a73eb4917a857b98c554078d68661425d2256fff65b8"
+    },
+    "1557258881947": {
+      "events": {
+        "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogVehicleTypeSet",
+          "type": "event",
+          "signature": "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce"
+        },
+        "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothOperatorRemoved",
+          "type": "event",
+          "signature": "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295"
+        },
+        "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOperator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "depositWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogTollBoothOperatorCreated",
+          "type": "event",
+          "signature": "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0x67dBA1E3B0F99Ce55e70b7A610973f30036dDe15",
+      "transactionHash": "0x39637b5e40153c721736a73eb4917a857b98c554078d68661425d2256fff65b8"
+    },
+    "1557259791577": {
+      "events": {},
+      "links": {},
+      "address": "0x3F613Dab81e547f011Fc0c788883808639C58E8a",
+      "transactionHash": "0xcdfcbbd8ca5d59d146b89a14c9aadc0800648dcd849d5e54debf2ffc81d48a8d"
+    },
+    "1557399901138": {
+      "events": {},
+      "links": {},
+      "address": "0xc948a57A4f74C6Fbb3313fba6564b3E6D2B6d6A1",
+      "transactionHash": "0x39637b5e40153c721736a73eb4917a857b98c554078d68661425d2256fff65b8"
+    },
+    "1557565739421": {
+      "events": {},
+      "links": {},
+      "address": "0xC52Ab37B7f6799b2dA1D0A72b5155B4f44FE4f25",
+      "transactionHash": "0x39637b5e40153c721736a73eb4917a857b98c554078d68661425d2256fff65b8"
+    },
+    "1557754068998": {
+      "events": {
+        "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogVehicleTypeSet",
+          "type": "event",
+          "signature": "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce"
+        },
+        "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothOperatorRemoved",
+          "type": "event",
+          "signature": "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295"
+        },
+        "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOperator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "depositWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogTollBoothOperatorCreated",
+          "type": "event",
+          "signature": "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0xdE04dE579A8894BFd519f298Cb214AeA6CbC5850",
+      "transactionHash": "0x1574d3a8349902b00b70cb9c7884a5d573c7f04d7d23497094c38ca7894f66f3"
+    },
+    "1558254084247": {
+      "events": {
+        "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogVehicleTypeSet",
+          "type": "event",
+          "signature": "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce"
+        },
+        "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothOperatorRemoved",
+          "type": "event",
+          "signature": "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295"
+        },
+        "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOperator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "depositWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogTollBoothOperatorCreated",
+          "type": "event",
+          "signature": "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0x86Bc9B6108D3a7e7dcBFa802597349aD89Faba6F",
+      "transactionHash": "0x501a26fc8a0b36df6735231df5e936badb5c4b4247b391a69a4b6663c1625882"
+    },
+    "1558254273385": {
+      "events": {
+        "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogVehicleTypeSet",
+          "type": "event",
+          "signature": "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce"
+        },
+        "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothOperatorRemoved",
+          "type": "event",
+          "signature": "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295"
+        },
+        "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOperator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "depositWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogTollBoothOperatorCreated",
+          "type": "event",
+          "signature": "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0x7eadB2d5baec97eF80aC9102005754450d0C6727",
+      "transactionHash": "0x32c927140223498570ce624ed46263a0ad917bbfee2870ddae969d6bfaddaea8"
+    },
+    "1558276632446": {
+      "events": {
+        "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogVehicleTypeSet",
+          "type": "event",
+          "signature": "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce"
+        },
+        "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothOperatorRemoved",
+          "type": "event",
+          "signature": "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295"
+        },
+        "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOperator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "depositWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogTollBoothOperatorCreated",
+          "type": "event",
+          "signature": "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0x02e59E35394E3469a946179890864913F5A1258a",
+      "transactionHash": "0x90fab1c05f05bd9cca394b2e1679ff00fa717514a13ce0884607149624e021a6"
+    },
+    "1558459855686": {
+      "events": {
+        "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogVehicleTypeSet",
+          "type": "event",
+          "signature": "0x9f2ee98048ade87cdf829a5e6f1089e5cc01f2afc787ff7e396df2d70e5216ce"
+        },
+        "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothOperatorRemoved",
+          "type": "event",
+          "signature": "0x7253d8f039804cf6934064766e2c63c6939d22caf79d2a54df904eb8b0ffa295"
+        },
+        "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOperator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "depositWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogTollBoothOperatorCreated",
+          "type": "event",
+          "signature": "0xae2fe91936c66c7f87615f93bd9630929b5778679dc04d2a466fed57108463a8"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0x5d3099af43E476A478DAF8A188763a2a02f383Ef",
       "transactionHash": "0x39637b5e40153c721736a73eb4917a857b98c554078d68661425d2256fff65b8"
     }
   },
   "schemaVersion": "3.0.0-beta.2",
-  "updatedAt": "2019-05-05T15:08:41.593Z"
+  "updatedAt": "2019-05-21T17:31:09.291Z"
 }

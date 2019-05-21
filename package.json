@@ -39,7 +39,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^0.26.1",
+    "css-loader": "^2.1.1",
     "eslint": "^3.14.1",
     "eslint-config-standard": "^6.0.0",
     "eslint-plugin-babel": "^4.1.2",
@@ -54,7 +54,7 @@
     "source-map-support": "^0.5.3",
     "style-loader": "^0.13.1",
     "truffle": "^4.1.13",
-    "truffle-contract": "^1.1.11"
+    "truffle-contract": "^4.0.16"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"

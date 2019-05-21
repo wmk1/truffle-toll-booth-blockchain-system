@@ -1,5 +1,6 @@
 import Web3 from "web3"
 
+
 import regulatorArtifacts from '../build/contracts/Regulator.json'
 import tollBoothOperatorArtifacts from '../build/contracts/TollBoothOperator.json'
 
@@ -8,6 +9,7 @@ const App = {
   accounts: null,
   regulator: null,
   tollBoothOperator: null,
+  regulatorInstance: null,
 
   start: async () => {
     const { web3 } = App
@@ -24,8 +26,6 @@ const App = {
         tollBoothOperatorArtifacts.abi,
         deployedNetwork.address
       )
-      console.log(App.regulator)
-      console.log(App.tollBoothOperator)
     } catch (error) {
         App.setStatus(error)
         console.error(error)
@@ -36,15 +36,19 @@ const App = {
     const recipient = document.getElementById('individualVehicleAddress').value
   },
 
+  refreshBalance: async function() {
+    //const balance = await getBalance(this.account).call()
+
+    const balanceElement = document.getElementsByClassName("balance")[0]
+    balanceElement.innerHTML = balance
+  },
+
   changeVehicleType: async () => {
     const { setVehicleType } = App.regulator.methods
-    console.log('set vehicle type', setVehicleType)
-    
     let vehicleType = parseInt(document.getElementById("vehicleType").value)
     let recipient = document.getElementById("address").value
-    console.log('checking values', vehicleType, recipient)
     App.setStatus("Changing vehicle type...")
-    await setVehicleType(vehicleType, recipient).send({ from: App.accounts[0] }) 
+    await setVehicleType(recipient, vehicleType).send({ from: App.accounts[0]})
   },
 
   updateRoutePrice: async () => {
@@ -58,26 +62,32 @@ const App = {
   },
 
   reportVehicleExit: async() => {
-    const { reportExitRoad } = this.tollBoothOperator.methods
+    const { reportExitRoad } = App.tollBoothOperator.methods
     const individualVehicleAddress = document.getElementById('individualVehicleAddress').value
     await reportExitRoad(individualVehicleAddress).send({ from: this.account })
   },
 
-  setStatus: async (message) => {
-    const status = document.getElementById('status')
-    status.innerHTML = message
-  },
+  
 
   createNewOperator: async() => {
     const { createNewOperator } = App.regulator.methods
     const operatorAddress = document.getElementById('receiver').value
     const operatorDeposit = parseInt(document.getElementById('operatorDeposit').value)
-  }
-}
+
+    await createNewOperator(operatorAddress, operatorDeposit)
+  },
+  
+ setStatus: async (message) => {
+  const status = document.getElementById('status')
+  status.innerHTML = message
+},
+} 
+
+
 
 window.App = App
 
-window.addEventListener('load', () => {
+window.addEventListener('load', function() {
   if (window.ethereum) {
     // use MetaMask's provider
     App.web3 = new Web3(window.ethereum)
