@@ -70,14 +70,26 @@
           placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
         <br>
         <button class="tablinks" onclick=App.setRoutePrice()>Set route price</button>
+        <br>
+        <br>
+        <h5>Set multiplier</h5>
+        <label for="newVehicleType">New vehicle type: </label><input type="text" id="newVehicleType"
+          placeholder="Allowed values: 1,2,3,4"></input>
+        <br>
+        <br><label for="newMultiplier">Multiplier: </label><input type="text" id="newMultiplier"
+          placeholder="Allowed values: 2,3,4,..."></input>
+        <br>
+        <button class="tablinks" onclick=App.setMultiplier()>Set route price</button>
       </div>
       <div class="tab-pane" id="tabs-3">
         <h5>Individual vehicles content</h5>
         <p>Address balance: </p>
+        <p id="addressBalance"></p>
         <br>
         <label for="individualVehicleAddress">Individual vehicle address: </label><input type="text"
           id="individualVehicleAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
         <button class="tablinks" onclick=App.checkBalance()>See address balance </button>
+        
       </div>
       <div class="tab-pane" id="tabs-4">
         <h5>Individual toll booth operators</h5>
