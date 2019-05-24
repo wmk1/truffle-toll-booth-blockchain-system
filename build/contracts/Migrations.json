@@ -1593,12 +1593,18 @@
     "1558459855686": {
       "events": {},
       "links": {},
-      "address": "0xFcc2E084fa5fADa5E9E6f8f9cd74BAa99cdd9849",
+      "address": "0xc05CFD974C8E4A4872Cf7E461AC71A6B6A6eb2Ef",
+      "transactionHash": "0xbf6052eb1ae788a2be77f4ef32b033fc19b5e1c5967670d990634f57508e769c"
+    },
+    "1558627533061": {
+      "events": {},
+      "links": {},
+      "address": "0xFe0F32D2FEA441d8f3ED63AA79f69b6d29ccf712",
       "transactionHash": "0xa620c43b6f2135712a054b7d6809d6d042e5f2d1fb177a1d4e23e10fff07b474"
     }
   },
   "schemaVersion": "3.0.0-beta.2",
-  "updatedAt": "2019-05-21T17:31:09.270Z",
+  "updatedAt": "2019-05-23T16:05:46.765Z",
   "devdoc": {
     "methods": {}
   },

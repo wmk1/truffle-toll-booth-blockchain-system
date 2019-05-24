@@ -11,7 +11,7 @@ import "./Regulator.sol";
 import "./TollBoothHolder.sol";
 import "./SafeMath.sol";
 
-contract TollBoothOperator is Owned, Pausable, DepositHolder, TollBoothHolder, 
+contract TollBoothOperator is Owned, Pausable, DepositHolder, TollBoothHolder,
 MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
 
     using SafeMath for uint;

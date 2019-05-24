@@ -36,7 +36,7 @@ const App = {
     const recipient = document.getElementById('individualVehicleAddress').value
   },
 
-  refreshBalance: async function() {
+  refreshBalance: async () => {
     //const balance = await getBalance(this.account).call()
 
     const balanceElement = document.getElementsByClassName("balance")[0]
@@ -45,10 +45,14 @@ const App = {
 
   changeVehicleType: async () => {
     const { setVehicleType } = App.regulator.methods
+    console.log('App.regulator', App.regulator)
     let vehicleType = parseInt(document.getElementById("vehicleType").value)
     let recipient = document.getElementById("address").value
     App.setStatus("Changing vehicle type...")
-    await setVehicleType(recipient, vehicleType).send({ from: App.accounts[0]})
+    const request = await setVehicleType(recipient, vehicleType).send({ from: App.accounts[0]})
+    console.log('request', request)
+    App.setStatus('Changed vehicle type to ' + vehicleType + ' for recipient: ' + recipient)
+    console.log('After changing vehicle type', App.regulator)
   },
 
   updateRoutePrice: async () => {
@@ -58,7 +62,8 @@ const App = {
     const exitBooth = document.getElementById('exitBooth').value
     const amount = parseInt(document.getElementById('routePriceAmount').value)
 
-    await setRoutePrice(entryBooth, exitBooth, amount).send({ from: this.account })
+    const request = await setRoutePrice(entryBooth, exitBooth, amount).send({ from: this.account })
+    App.setStatus('Route price changed to ' + amount + ' for route from ' + entryBooth + ' to ' + exitBooth)
   },
 
   reportVehicleExit: async() => {
@@ -67,7 +72,9 @@ const App = {
     await reportExitRoad(individualVehicleAddress).send({ from: this.account })
   },
 
-  
+  getVehicles: async() => {
+    
+  },
 
   createNewOperator: async() => {
     const { createNewOperator } = App.regulator.methods
