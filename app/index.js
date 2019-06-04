@@ -1,4 +1,5 @@
 import Web3 from "web3"
+import contract from "truffle-contract"
 
 
 import regulatorArtifacts from '../build/contracts/Regulator.json'
@@ -10,6 +11,8 @@ const App = {
   regulator: null,
   tollBoothOperator: null,
   regulatorInstance: null,
+  vehicles: null,
+  regulatorDeployed: null,
 
   start: async () => {
     const { web3 } = App
@@ -30,6 +33,10 @@ const App = {
         App.setStatus(error)
         console.error(error)
     }
+    const regulatorContract = contract(regulatorArtifacts)
+    regulatorContract.setProvider(App.web3.currentProvider)
+    App.regulatorDeployed = await regulatorContract.deployed()
+    console.log('App.regulatorContract', App.regulatorDeployed)
   },
 
   checkBalance: async () => {
@@ -49,10 +56,18 @@ const App = {
     let vehicleType = parseInt(document.getElementById("vehicleType").value)
     let recipient = document.getElementById("address").value
     App.setStatus("Changing vehicle type...")
-    const request = await setVehicleType(recipient, vehicleType).send({ from: App.accounts[0]})
-    console.log('request', request)
+    console.log('App.regulatorDeployed in change vehicle type', App.regulatorDeployed)
+    const result = await App.regulatorDeployed.setVehicleType(recipient, vehicleType, {
+      from: App.accounts[0]
+    })
+    console.log('result', result)
+    //const request = await setVehicleType(recipient, vehicleType).send({ from: App.accounts[0]})
+  //  console.log('request', request)
     App.setStatus('Changed vehicle type to ' + vehicleType + ' for recipient: ' + recipient)
     console.log('After changing vehicle type', App.regulator)
+   // App.regulatorInstance = request
+    //console.log('regulator instance after', App.regulatorInstance)
+    await App.getVehicles()
   },
 
   updateRoutePrice: async () => {
@@ -73,7 +88,28 @@ const App = {
   },
 
   getVehicles: async() => {
-    
+    console.log('App regulator Instance event', App.regulatorInstance.events.LogVehicleTypeSet())
+    console.log('get logs', App.regulatorInstance.events.LogVehicleTypeSet({
+      fromBlock: 0,
+      toBlock: 'latest'
+  }, (error, event) => { console.log(event); })
+  .on('data', (event) => {
+      console.log(event); // same results as the optional callback above
+  })
+  .on('changed', (event) => {
+      // remove event from local database
+  })
+  .on('error', console.error)
+  )
+    App.regulatorInstance.events.LogVehicleTypeSet({}, {
+      fromBlock: 0,
+      toBlock: 'latest'
+   }).get((error, logs) => {
+    let vehicles = logs.map(log => {
+      console.log('log of vehicles')
+      return log.args.vehicle + ", " + log.args.vehicleType;
+    })
+  })
   },
 
   createNewOperator: async() => {
