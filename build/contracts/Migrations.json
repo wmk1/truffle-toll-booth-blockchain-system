@@ -1619,10 +1619,22 @@
       "links": {},
       "address": "0x51909979452AE2E479D2178198A28D50999959CA",
       "transactionHash": "0xf4ac02feb5f1791880fd4cf1e55f3c9b482af4f457eb0c119ba724c43520a881"
+    },
+    "1559718783495": {
+      "events": {},
+      "links": {},
+      "address": "0x042FD2f0ecFBd633EA2256BCC8E5f65F03D02619",
+      "transactionHash": "0x6a55cdcfe8532cbacc8dad04a9499fc44ba6b08d4b07791e9639609ba841782c"
+    },
+    "1559995837900": {
+      "events": {},
+      "links": {},
+      "address": "0xBaBf6780ed83770705013b8A2cBf2C68c05e72bb",
+      "transactionHash": "0x4e49840840ce70827e13e1b4abb969e542b83f05d0bc37512a461ad15cc708bc"
     }
   },
   "schemaVersion": "3.0.0-beta.2",
-  "updatedAt": "2019-06-04T15:04:13.761Z",
+  "updatedAt": "2019-06-08T12:13:00.347Z",
   "devdoc": {
     "methods": {}
   },

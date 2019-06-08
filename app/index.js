@@ -1,7 +1,6 @@
 import Web3 from "web3"
 import contract from "truffle-contract"
 
-
 import regulatorArtifacts from '../build/contracts/Regulator.json'
 import tollBoothOperatorArtifacts from '../build/contracts/TollBoothOperator.json'
 
@@ -11,62 +10,51 @@ const App = {
   regulator: null,
   tollBoothOperator: null,
   regulatorInstance: null,
-  vehicles: null,
+  vehicles: [],
   regulatorDeployed: null,
+  tollBoothOperator: null,
 
   start: async () => {
     const { web3 } = App
     try {
-      const networkId = await web3.eth.net.getId()
-      const deployedNetwork = regulatorArtifacts.networks[networkId]
       App.accounts = await web3.eth.getAccounts()
       web3.eth.defaultAccount = App.accounts[0]
-      App.regulator = await new web3.eth.Contract(
-        regulatorArtifacts.abi,
-        deployedNetwork.address
-      ),
-      App.tollBoothOperator = new web3.eth.Contract(
-        tollBoothOperatorArtifacts.abi,
-        deployedNetwork.address
-      )
+      const regulatorContract = contract(regulatorArtifacts)
+      regulatorContract.setProvider(App.web3.currentProvider)
+      App.regulator = await regulatorContract.deployed()
+      const tollBoothOperatorContract = contract(tollBoothOperatorArtifacts)
+      tollBoothOperatorContract.setProvider(App.web3.currentProvider)
+      App.tollBoothOperator = await regulatorContract.deployed()
+      document.getElementById("regulatorOwner").innerHTML = await App.regulator.getOwner()
+      document.getElementById("tollBoothOperatorOwner").innerHTML = await App.tollBoothOperator.getOwner()
     } catch (error) {
         App.setStatus(error)
         console.error(error)
     }
-    const regulatorContract = contract(regulatorArtifacts)
-    regulatorContract.setProvider(App.web3.currentProvider)
-    App.regulatorDeployed = await regulatorContract.deployed()
-    console.log('App.regulatorContract', App.regulatorDeployed)
   },
 
   checkBalance: async () => {
     const recipient = document.getElementById('individualVehicleAddress').value
+
+    const balance = await App.web3.eth.getBalance(recipient)
+
+    document.getElementById('addressBalance').innerHTML = balance + ' weis.'
   },
 
   refreshBalance: async () => {
-    //const balance = await getBalance(this.account).call()
-
     const balanceElement = document.getElementsByClassName("balance")[0]
     balanceElement.innerHTML = balance
   },
 
   changeVehicleType: async () => {
-    const { setVehicleType } = App.regulator.methods
-    console.log('App.regulator', App.regulator)
     let vehicleType = parseInt(document.getElementById("vehicleType").value)
     let recipient = document.getElementById("address").value
     App.setStatus("Changing vehicle type...")
     console.log('App.regulatorDeployed in change vehicle type', App.regulatorDeployed)
-    const result = await App.regulatorDeployed.setVehicleType(recipient, vehicleType, {
+    const result = await App.regulator.setVehicleType(recipient, vehicleType, {
       from: App.accounts[0]
-    })
-    console.log('result', result)
-    //const request = await setVehicleType(recipient, vehicleType).send({ from: App.accounts[0]})
-  //  console.log('request', request)
+    })  
     App.setStatus('Changed vehicle type to ' + vehicleType + ' for recipient: ' + recipient)
-    console.log('After changing vehicle type', App.regulator)
-   // App.regulatorInstance = request
-    //console.log('regulator instance after', App.regulatorInstance)
     await App.getVehicles()
   },
 
@@ -78,52 +66,61 @@ const App = {
     const amount = parseInt(document.getElementById('routePriceAmount').value)
 
     const request = await setRoutePrice(entryBooth, exitBooth, amount).send({ from: this.account })
+    console.log('request in function', request.logs)
     App.setStatus('Route price changed to ' + amount + ' for route from ' + entryBooth + ' to ' + exitBooth)
   },
 
   reportVehicleExit: async() => {
-    const { reportExitRoad } = App.tollBoothOperator.methods
     const individualVehicleAddress = document.getElementById('individualVehicleAddress').value
-    await reportExitRoad(individualVehicleAddress).send({ from: this.account })
+    await App.tollBoothOperator.reportExitRoad(individualVehicleAddress, {
+      from: App.accounts[0]
+    })
+    App.setStatus("Vehicle " + individualVehicleAddress + " exited from road successfully ")
   },
 
   getVehicles: async() => {
-    console.log('App regulator Instance event', App.regulatorInstance.events.LogVehicleTypeSet())
-    console.log('get logs', App.regulatorInstance.events.LogVehicleTypeSet({
-      fromBlock: 0,
-      toBlock: 'latest'
-  }, (error, event) => { console.log(event); })
-  .on('data', (event) => {
-      console.log(event); // same results as the optional callback above
-  })
-  .on('changed', (event) => {
-      // remove event from local database
-  })
-  .on('error', console.error)
-  )
-    App.regulatorInstance.events.LogVehicleTypeSet({}, {
-      fromBlock: 0,
-      toBlock: 'latest'
-   }).get((error, logs) => {
-    let vehicles = logs.map(log => {
-      console.log('log of vehicles')
-      return log.args.vehicle + ", " + log.args.vehicleType;
-    })
-  })
+      const events = await App.regulator.getPastEvents({
+        fromBlock: '0',
+        toBlock: 'latest'
+      })
+      App.vehicles.push(events)
+      console.log('events', events)
+      console.log('vehicles array', App.vehicles)
   },
 
   createNewOperator: async() => {
-    const { createNewOperator } = App.regulator.methods
-    const operatorAddress = document.getElementById('receiver').value
-    const operatorDeposit = parseInt(document.getElementById('operatorDeposit').value)
+    const operatorAddress = document.getElementById('newOperatorAddress').value
+    const operatorDeposit = parseInt(document.getElementById('newOperatorDeposit').value)
 
-    await createNewOperator(operatorAddress, operatorDeposit)
+    const request = await App.tollBoothOperator.createNewOperator(operatorAddress, operatorDeposit, {
+      from: App.accounts[0]
+    })
+    console.log('new operator request', request)
   },
-  
+
+  addTollBooth: async() => {
+    const tollBoothAddress = document.getElementById('createdTollBooth').value
+
+    await App.tollBoothOperator.addTollBooth(tollBoothAddress, {
+      from: App.accounts[0]
+    })
+  },
+
+  setMultiplier: async() => {
+    const newMultiplier = document.getElementById('newMultiplier').value
+    const vehicleType = parseInt(document.getElementById('vehicleType').value)
+
+    await App.tollBoothOperator.setMultiplier(newMultiplier, vehicleType, {
+      from: App.accounts[0]
+    })
+  },
+
  setStatus: async (message) => {
   const status = document.getElementById('status')
   status.innerHTML = message
 },
+
+  
 } 
 
 
