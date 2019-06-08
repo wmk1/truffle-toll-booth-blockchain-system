@@ -8385,12 +8385,12 @@
         }
       },
       "links": {},
-      "address": "0xE734bb098830B51c1e37a5B4E5309C88c6f72741",
-      "transactionHash": "0xa21a8039a6144488761dda204ef0982cd219fe4a8185ff7fa779a46f191adbc7"
+      "address": "0x498Ba55015328C4B80680BE1A967eceDCdB5b781",
+      "transactionHash": "0xae8b975e15c5f3363ea19a4655f37a79c89764e275726bdcdd62aac3c11428be"
     }
   },
   "schemaVersion": "3.0.0-beta.2",
-  "updatedAt": "2019-06-08T12:13:00.374Z",
+  "updatedAt": "2019-06-08T15:21:32.060Z",
   "devdoc": {
     "methods": {}
   },

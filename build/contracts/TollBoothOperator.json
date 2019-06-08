@@ -286,7 +286,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "constructor",
+      "signature": "constructor"
     },
     {
       "payable": true,
@@ -19990,9 +19991,16 @@
     "name": "solc",
     "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1559995837900": {
+      "events": {},
+      "links": {},
+      "address": "0x10D212a7d759641d1AebB908b47E8aD9A1DD07EF",
+      "transactionHash": "0x262de58686aa7066017b69dbfa1df1835fb8e9b09fcca269a60276317600d711"
+    }
+  },
   "schemaVersion": "3.0.0-beta.2",
-  "updatedAt": "2019-06-08T12:13:00.353Z",
+  "updatedAt": "2019-06-08T15:21:32.068Z",
   "devdoc": {
     "methods": {}
   },

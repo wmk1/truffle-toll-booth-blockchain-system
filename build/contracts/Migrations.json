@@ -1629,12 +1629,12 @@
     "1559995837900": {
       "events": {},
       "links": {},
-      "address": "0xBaBf6780ed83770705013b8A2cBf2C68c05e72bb",
-      "transactionHash": "0x4e49840840ce70827e13e1b4abb969e542b83f05d0bc37512a461ad15cc708bc"
+      "address": "0xe69f3047C2Caa4F6b67Bf9a3323F764cf79448Fa",
+      "transactionHash": "0x538249b880109cc2e30072ca3a3f03d9975b923ab86b8264d8e12be4f876877a"
     }
   },
   "schemaVersion": "3.0.0-beta.2",
-  "updatedAt": "2019-06-08T12:13:00.347Z",
+  "updatedAt": "2019-06-08T15:21:32.048Z",
   "devdoc": {
     "methods": {}
   },
