@@ -25,6 +25,7 @@ const App = {
       const tollBoothOperatorContract = contract(tollBoothOperatorArtifacts)
       tollBoothOperatorContract.setProvider(App.web3.currentProvider)
       App.tollBoothOperator = await tollBoothOperatorContract.deployed()
+      console.log('App.regulator', App.regulator)
       console.log('App.tollBoothOperator', App.tollBoothOperator)
       document.getElementById("regulatorOwner").innerHTML = await App.regulator.getOwner()
       document.getElementById("tollBoothOperatorOwner").innerHTML = await App.tollBoothOperator.getOwner()
