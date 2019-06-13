@@ -11,6 +11,7 @@ const App = {
   tollBoothOperator: null,
   regulatorInstance: null,
   vehicles: [],
+  operators: [],
   tollBoothOperator: null,
   entryExitLogs: [],
 
@@ -18,15 +19,12 @@ const App = {
     const { web3 } = App
     try {
       App.accounts = await web3.eth.getAccounts()
-      web3.eth.defaultAccount = App.accounts[0]
       const regulatorContract = contract(regulatorArtifacts)
       regulatorContract.setProvider(App.web3.currentProvider)
       App.regulator = await regulatorContract.deployed()
       const tollBoothOperatorContract = contract(tollBoothOperatorArtifacts)
       tollBoothOperatorContract.setProvider(App.web3.currentProvider)
       App.tollBoothOperator = await tollBoothOperatorContract.deployed()
-      console.log('App.regulator', App.regulator)
-      console.log('App.tollBoothOperator', App.tollBoothOperator)
       document.getElementById("regulatorOwner").innerHTML = await App.regulator.getOwner()
       document.getElementById("tollBoothOperatorOwner").innerHTML = await App.tollBoothOperator.getOwner()
     } catch (error) {
@@ -41,11 +39,6 @@ const App = {
     document.getElementById('addressBalance').innerHTML = balance + ' weis.'
   },
 
-  refreshBalance: async () => {
-    const balanceElement = document.getElementsByClassName("balance")[0]
-    balanceElement.innerHTML = balance
-  },
-
   changeVehicleType: async () => {
     let vehicleType = parseInt(document.getElementById("vehicleType").value)
     let recipient = document.getElementById("address").value
@@ -58,7 +51,6 @@ const App = {
   },
 
   setRoutePrice: async () => {
-
     const entryBooth = document.getElementById('entryBooth').value
     const exitBooth = document.getElementById('exitBooth').value
     const amount = parseInt(document.getElementById('routePriceNewValue').value)
@@ -72,29 +64,46 @@ const App = {
 
   reportVehicleExit: async() => {
     const individualVehicleAddress = document.getElementById('individualVehicleAddress').value
-    const request = App.tollBoothOperator.reportExitRoad(individualVehicleAddress, {
+    const addressHashed = await App.web3.utils.soliditySha3(individualVehicleAddress)
+    console.log('address hashed', addressHashed)
+    const request = App.tollBoothOperator.reportExitRoad(addressHashed, {
       from: App.accounts[0]
     })
     App.setStatus("Vehicle " + individualVehicleAddress + " exited from road successfully ")
   },
+
+  
 
   getVehicles: async() => {
       const events = await App.regulator.getPastEvents({
         fromBlock: '0',
         toBlock: 'latest'
       })
-      App.vehicles.push(events)
-      console.log('events', events)
-      console.log('vehicles array', App.vehicles)
+      events.map(data => {
+       App.vehicles.push({
+          sender: data.returnValues.sender,
+          vehicleType: data.returnValues.vehicleType
+        })
+      })
+      console.log('events after vehicle set', events)
+ //     console.log('vehicles array', App.vehicles)
   },
 
   createNewOperator: async() => {
     const operatorAddress = document.getElementById('newOperatorAddress').value
     const operatorDeposit = parseInt(document.getElementById('newOperatorDeposit').value)
-    const request = await App.tollBoothOperator.createNewOperator(operatorAddress, operatorDeposit, {
+    await App.regulator.createNewOperator(operatorAddress, operatorDeposit, {
       from: App.accounts[0]
     })
-    console.log('new operator request', request)
+    const events = await App.regulator.getPastEvents('LogTollBoothOperatorCreated', {
+      fromBlock: '0',
+      toBlock: 'latest'
+    })
+    events.map(data => {
+      App.operators.push({
+        
+      })
+    })
   },
 
   addTollBooth: async() => {
@@ -105,7 +114,7 @@ const App = {
   },
 
   setMultiplier: async() => {
-    const newMultiplier = document.getElementById('newMultiplier').value
+    const newMultiplier = parseInt(document.getElementById('newMultiplier').value)
     const vehicleType = parseInt(document.getElementById('vehicleType').value)
     await App.tollBoothOperator.setMultiplier(newMultiplier, vehicleType, {
       from: App.accounts[0]

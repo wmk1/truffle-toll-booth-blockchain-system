@@ -15,6 +15,8 @@
       $("#tabs").tabs();
     });
   </script>
+
+  
   <h1>ETH-26 - Toll booth operator project</h1>
   <h4>Important information:</h4>
   <h5>Vehicle types:</h5>
@@ -31,7 +33,7 @@
     <ul class="nav nav-tabs" role="tablist">
       <li class="active"><a href="#tabs-1" data-toggle="tab">Regulator</a>
       </li>
-      <li style="margin: 0 0 3px 0"><a href="#tabs-2" data-toggle="tab">Toll Booth Operators </a>
+      <li><a href="#tabs-2" data-toggle="tab">Toll Booth Operators </a>
       </li>
       <li><a href="#tabs-3" data-toggle="tab">Individual Vehicles </a>
       </li>
@@ -65,6 +67,23 @@
         <br>
         <br>
         <h5>List of operators</h5>
+        <table style="width:100%">
+          <tr>
+            <th>Operator address</th>
+            <th>Owner</th> 
+            <th>Deposit</th>
+          </tr>
+          <tr>
+            <td>App.vehicles.</td>
+            <td>Smith</td> 
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Eve</td>
+            <td>Jackson</td> 
+            <td>94</td>
+          </tr>
+        </table>
 
       </div>
       <div class="tab-pane" id="tabs-2">
@@ -79,11 +98,12 @@
         <label for="entryBooth">Entry booth: </label><input type="text" id="entryBooth"
           placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
         <br>
-        <br><label for="exitBooth">Exit booth: </label><input type="text" id="exitBooth"
+        <br>
+        <label for="exitBooth">Exit booth: </label><input type="text" id="exitBooth"
           placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
         <br>
         <br>
-        <br><label for="routePriceNewValue">Route price: </label><input type="text" id="routePriceNewValue"
+        <label for="routePriceNewValue">Route price: </label><input type="text" id="routePriceNewValue"
           placeholder="Any weis bigger than 0"></input>
         <button class="tablinks" onclick=App.setRoutePrice()>Set route price</button>
         <br>
@@ -92,7 +112,8 @@
         <label for="newVehicleType">New vehicle type: </label><input type="text" id="newVehicleType"
           placeholder="Allowed values: 1,2,3,4"></input>
         <br>
-        <br><label for="newMultiplier">Multiplier: </label><input type="text" id="newMultiplier"
+        <br>
+        <label for="newMultiplier">Multiplier: </label><input type="text" id="newMultiplier"
           placeholder="Allowed values: 2,3,4,..."></input>
         <br>
         <button class="tablinks" onclick=App.setMultiplier()>Set route price</button>
@@ -116,11 +137,12 @@
       </div>
     </div>
    
-    <p>
-      <strong>Transaction statuses:</strong>
-      <p id="status"></p>
-    </p>
+    
   </div>
+  <p>
+    <strong>Transaction statuses:</strong>
+    <p id="status"></p>
+  </p>
 <br>
   <script src="index.js"></script>
   <p>Created by Wojciech Kalinski</p>
