@@ -16,7 +16,7 @@
     });
   </script>
 
-  
+
   <h1>ETH-26 - Toll booth operator project</h1>
   <h4>Important information:</h4>
   <h5>Vehicle types:</h5>
@@ -67,22 +67,17 @@
         <br>
         <br>
         <h5>List of operators</h5>
-        <table style="width:100%">
-          <tr>
-            <th>Operator address</th>
-            <th>Owner</th> 
-            <th>Deposit</th>
-          </tr>
-          <tr>
-            <td>App.vehicles.</td>
-            <td>Smith</td> 
-            <td>50</td>
-          </tr>
-          <tr>
-            <td>Eve</td>
-            <td>Jackson</td> 
-            <td>94</td>
-          </tr>
+        <table id="operators" border="1">
+          <thead>
+              <tr>
+                  <th>New operator</th>
+                  <th>Deposit weis</th>
+                  <th>Owner</th>
+              </tr>
+          </thead>
+          <tbody>
+              
+          </tbody>
         </table>
 
       </div>
@@ -126,7 +121,19 @@
         <label for="individualVehicleAddress">Individual vehicle address: </label><input type="text"
           id="individualVehicleAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
         <button class="tablinks" onclick=App.checkBalance()>See address balance </button>
-        
+        <p>Entry and exit logs history:</p>
+        <table id="entryExitLogs" border="1">
+          <thead>
+              <tr>
+                  <th>Log</th>
+                  <th>Vehicle</th>
+                  <th>Owner</th>
+              </tr>
+          </thead>
+          <tbody>
+              
+          </tbody>
+        </table>
       </div>
       <div class="tab-pane" id="tabs-4">
         <h5>Individual toll booth operators</h5>

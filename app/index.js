@@ -1,4 +1,4 @@
-import Web3 from "web3"
+  import Web3 from "web3"
 import contract from "truffle-contract"
 
 import regulatorArtifacts from '../build/contracts/Regulator.json'
@@ -86,7 +86,8 @@ const App = {
         })
       })
       console.log('events after vehicle set', events)
- //     console.log('vehicles array', App.vehicles)
+      
+      console.log('vehicles array', App.vehicles)
   },
 
   createNewOperator: async() => {
@@ -100,10 +101,26 @@ const App = {
       toBlock: 'latest'
     })
     events.map(data => {
-      App.operators.push({
+      console.log('data inside creating operator', data)
+      $(document).ready(function() {
         
+        // var lastRow = $('#operators tbody tr:last').html()
+         //alert(lastRow);
+         //$('#operators tbody').append('<tr>' + lastRow + '</tr>')
+         //$('#operators tbody tr:last input').val(data.returnValues.newOperator)
+         $("#operators").find('tbody').append("<tr>")
+         .append("<td>" + data.returnValues.newOperator + "</td>")                                               
+         .append("<td>" + data.returnValues.depositWeis + "</td>")
+         .append("<td>" + data.returnValues.owner + "</td>")                                               
+         .append("</tr>")
+     })
+      let result = App.operators.push({
+        newOperator: data.returnValues.newOperator,
+        depositWeis: data.returnValues.depositWeis,
+        owner: data.returnValues.owner
       })
-    })
+      
+  });
   },
 
   addTollBooth: async() => {
