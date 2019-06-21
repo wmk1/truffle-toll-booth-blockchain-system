@@ -1,5 +1,6 @@
   import Web3 from "web3"
 import contract from "truffle-contract"
+import toBytes32 from './utils/toBytes32'
 
 import regulatorArtifacts from '../build/contracts/Regulator.json'
 import tollBoothOperatorArtifacts from '../build/contracts/TollBoothOperator.json'
@@ -64,15 +65,22 @@ const App = {
 
   reportVehicleExit: async() => {
     const individualVehicleAddress = document.getElementById('individualVehicleAddress').value
-    const addressHashed = await App.web3.utils.soliditySha3(individualVehicleAddress)
+    const addressHashed = await toBytes32(individualVehicleAddress)
     console.log('address hashed', addressHashed)
-    const request = App.tollBoothOperator.reportExitRoad(addressHashed, {
+    const request = await App.tollBoothOperator.reportExitRoad(addressHashed, {
       from: App.accounts[0]
     })
+    console.log('report vehicle exit', request)
     App.setStatus("Vehicle " + individualVehicleAddress + " exited from road successfully ")
   },
 
-  
+  depositWeis: async() => {
+    const depositWeis = parseInt(document.getElementById('depositedWeis').value)
+
+    await App.tollBoothOperator.setDeposit(deposit, {
+      from: App.accounts[0]
+    })
+  },
 
   getVehicles: async() => {
       const events = await App.regulator.getPastEvents({

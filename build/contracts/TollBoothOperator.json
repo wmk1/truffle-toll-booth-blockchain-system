@@ -19993,14 +19993,809 @@
   },
   "networks": {
     "1559995837900": {
+      "events": {
+        "0x26213b556e4ae8dd63f1f81f4ea6181803d9a3efcad477cd84dcae45a264c30b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "entryBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitSecretHashed",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "depositedWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRoadEntered",
+          "type": "event",
+          "signature": "0x26213b556e4ae8dd63f1f81f4ea6181803d9a3efcad477cd84dcae45a264c30b"
+        },
+        "0xcc28c1c2c2269c01d739ef1a54d12784fe3052b2f228668ba5f4bc862ebe51bc": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "exitBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitSecretHashed",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "finalFee",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "refundWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRoadExited",
+          "type": "event",
+          "signature": "0xcc28c1c2c2269c01d739ef1a54d12784fe3052b2f228668ba5f4bc862ebe51bc"
+        },
+        "0x739c4108960ded7f9e5e6790da2d3baebfb37959560441b5787b8c70676d873c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "exitSecretHashed",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "entryBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitBooth",
+              "type": "address"
+            }
+          ],
+          "name": "LogPendingPayment",
+          "type": "event",
+          "signature": "0x739c4108960ded7f9e5e6790da2d3baebfb37959560441b5787b8c70676d873c"
+        },
+        "0x851c9440e522074225f247c12030d8a38be67fbda82238aac95d4a4454647f9d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeesCollected",
+          "type": "event",
+          "signature": "0x851c9440e522074225f247c12030d8a38be67fbda82238aac95d4a4454647f9d"
+        },
+        "0xa32c4b1f26f0d877f643f7fb9db131f9cebf04d120fe5ada74c0bdfc808dab83": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousRegulator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newRegulator",
+              "type": "address"
+            }
+          ],
+          "name": "LogRegulatorSet",
+          "type": "event",
+          "signature": "0xa32c4b1f26f0d877f643f7fb9db131f9cebf04d120fe5ada74c0bdfc808dab83"
+        },
+        "0x5b631b37e5dfb698eace7497bcae58e93fac69e007127739fc79109d99c58332": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "entryBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitBooth",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "priceWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRoutePriceSet",
+          "type": "event",
+          "signature": "0x5b631b37e5dfb698eace7497bcae58e93fac69e007127739fc79109d99c58332"
+        },
+        "0x5e168e70d5925560e1407b68dc2495afbc25b36217cc6e4167b2cf3f28a46ef1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "multiplier",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogMultiplierSet",
+          "type": "event",
+          "signature": "0x5e168e70d5925560e1407b68dc2495afbc25b36217cc6e4167b2cf3f28a46ef1"
+        },
+        "0xe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "tollBooth",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothAdded",
+          "type": "event",
+          "signature": "0xe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d"
+        },
+        "0x5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe89678": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "tollBooth",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothRemoved",
+          "type": "event",
+          "signature": "0x5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe89678"
+        },
+        "0xfa53ebd539f52eb4ef352ffacb2f8f5f8080cd8bb7ebb2f1acab3e1ce4bd65cb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogDepositSet",
+          "type": "event",
+          "signature": "0xfa53ebd539f52eb4ef352ffacb2f8f5f8080cd8bb7ebb2f1acab3e1ce4bd65cb"
+        },
+        "0xae0f86d9801b0bd39a2ce25d9fd1f202f2fd22e80150be4a99adb0275a635d6c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_newPausedState",
+              "type": "bool"
+            }
+          ],
+          "name": "LogPausedSet",
+          "type": "event",
+          "signature": "0xae0f86d9801b0bd39a2ce25d9fd1f202f2fd22e80150be4a99adb0275a635d6c"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0x73240dBe7d34dDf92Bd65ad87A6E8592Ff861F1E",
+      "transactionHash": "0x576469dae025471b44079e9ab49af1ee69637246ee373f0c2f75f23f63ebce08"
+    },
+    "1560442909698": {
       "events": {},
       "links": {},
-      "address": "0x10D212a7d759641d1AebB908b47E8aD9A1DD07EF",
-      "transactionHash": "0x262de58686aa7066017b69dbfa1df1835fb8e9b09fcca269a60276317600d711"
+      "address": "0xdBeB602a44Cf23664f44755128dc7011b0D060Da",
+      "transactionHash": "0x8c8a3defdbb643b405ac339cf6799d9ca61a182b480cdb228b92732890d69aa2"
+    },
+    "1560445595327": {
+      "events": {},
+      "links": {},
+      "address": "0x8f2d56feA5a67b4c87F20609B35B8E89B9400b58",
+      "transactionHash": "0x6a3e68398c073999d49d437a8dbbe1f233f4c0b7e65e2a22a303120d684f8a0a"
+    },
+    "1560454456026": {
+      "events": {
+        "0x26213b556e4ae8dd63f1f81f4ea6181803d9a3efcad477cd84dcae45a264c30b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "entryBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitSecretHashed",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "depositedWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRoadEntered",
+          "type": "event",
+          "signature": "0x26213b556e4ae8dd63f1f81f4ea6181803d9a3efcad477cd84dcae45a264c30b"
+        },
+        "0xcc28c1c2c2269c01d739ef1a54d12784fe3052b2f228668ba5f4bc862ebe51bc": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "exitBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitSecretHashed",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "finalFee",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "refundWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRoadExited",
+          "type": "event",
+          "signature": "0xcc28c1c2c2269c01d739ef1a54d12784fe3052b2f228668ba5f4bc862ebe51bc"
+        },
+        "0x739c4108960ded7f9e5e6790da2d3baebfb37959560441b5787b8c70676d873c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "exitSecretHashed",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "entryBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitBooth",
+              "type": "address"
+            }
+          ],
+          "name": "LogPendingPayment",
+          "type": "event",
+          "signature": "0x739c4108960ded7f9e5e6790da2d3baebfb37959560441b5787b8c70676d873c"
+        },
+        "0x851c9440e522074225f247c12030d8a38be67fbda82238aac95d4a4454647f9d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeesCollected",
+          "type": "event",
+          "signature": "0x851c9440e522074225f247c12030d8a38be67fbda82238aac95d4a4454647f9d"
+        },
+        "0xa32c4b1f26f0d877f643f7fb9db131f9cebf04d120fe5ada74c0bdfc808dab83": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousRegulator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newRegulator",
+              "type": "address"
+            }
+          ],
+          "name": "LogRegulatorSet",
+          "type": "event",
+          "signature": "0xa32c4b1f26f0d877f643f7fb9db131f9cebf04d120fe5ada74c0bdfc808dab83"
+        },
+        "0x5b631b37e5dfb698eace7497bcae58e93fac69e007127739fc79109d99c58332": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "entryBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitBooth",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "priceWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRoutePriceSet",
+          "type": "event",
+          "signature": "0x5b631b37e5dfb698eace7497bcae58e93fac69e007127739fc79109d99c58332"
+        },
+        "0x5e168e70d5925560e1407b68dc2495afbc25b36217cc6e4167b2cf3f28a46ef1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "multiplier",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogMultiplierSet",
+          "type": "event",
+          "signature": "0x5e168e70d5925560e1407b68dc2495afbc25b36217cc6e4167b2cf3f28a46ef1"
+        },
+        "0xe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "tollBooth",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothAdded",
+          "type": "event",
+          "signature": "0xe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d"
+        },
+        "0x5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe89678": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "tollBooth",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothRemoved",
+          "type": "event",
+          "signature": "0x5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe89678"
+        },
+        "0xfa53ebd539f52eb4ef352ffacb2f8f5f8080cd8bb7ebb2f1acab3e1ce4bd65cb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogDepositSet",
+          "type": "event",
+          "signature": "0xfa53ebd539f52eb4ef352ffacb2f8f5f8080cd8bb7ebb2f1acab3e1ce4bd65cb"
+        },
+        "0xae0f86d9801b0bd39a2ce25d9fd1f202f2fd22e80150be4a99adb0275a635d6c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_newPausedState",
+              "type": "bool"
+            }
+          ],
+          "name": "LogPausedSet",
+          "type": "event",
+          "signature": "0xae0f86d9801b0bd39a2ce25d9fd1f202f2fd22e80150be4a99adb0275a635d6c"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0xa45C6F9938ea4e7aA4A68dE510E183304d55E103",
+      "transactionHash": "0x1ad97d4b855a354e576d9ff3e92d882ccc75a4defa92a37b4a25ea1fd3bdd9f8"
+    },
+    "1560539030744": {
+      "events": {
+        "0x26213b556e4ae8dd63f1f81f4ea6181803d9a3efcad477cd84dcae45a264c30b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "vehicle",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "entryBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitSecretHashed",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "depositedWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRoadEntered",
+          "type": "event",
+          "signature": "0x26213b556e4ae8dd63f1f81f4ea6181803d9a3efcad477cd84dcae45a264c30b"
+        },
+        "0xcc28c1c2c2269c01d739ef1a54d12784fe3052b2f228668ba5f4bc862ebe51bc": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "exitBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitSecretHashed",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "finalFee",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "refundWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRoadExited",
+          "type": "event",
+          "signature": "0xcc28c1c2c2269c01d739ef1a54d12784fe3052b2f228668ba5f4bc862ebe51bc"
+        },
+        "0x739c4108960ded7f9e5e6790da2d3baebfb37959560441b5787b8c70676d873c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "exitSecretHashed",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "entryBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitBooth",
+              "type": "address"
+            }
+          ],
+          "name": "LogPendingPayment",
+          "type": "event",
+          "signature": "0x739c4108960ded7f9e5e6790da2d3baebfb37959560441b5787b8c70676d873c"
+        },
+        "0x851c9440e522074225f247c12030d8a38be67fbda82238aac95d4a4454647f9d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeesCollected",
+          "type": "event",
+          "signature": "0x851c9440e522074225f247c12030d8a38be67fbda82238aac95d4a4454647f9d"
+        },
+        "0xa32c4b1f26f0d877f643f7fb9db131f9cebf04d120fe5ada74c0bdfc808dab83": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousRegulator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newRegulator",
+              "type": "address"
+            }
+          ],
+          "name": "LogRegulatorSet",
+          "type": "event",
+          "signature": "0xa32c4b1f26f0d877f643f7fb9db131f9cebf04d120fe5ada74c0bdfc808dab83"
+        },
+        "0x5b631b37e5dfb698eace7497bcae58e93fac69e007127739fc79109d99c58332": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "entryBooth",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "exitBooth",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "priceWeis",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRoutePriceSet",
+          "type": "event",
+          "signature": "0x5b631b37e5dfb698eace7497bcae58e93fac69e007127739fc79109d99c58332"
+        },
+        "0x5e168e70d5925560e1407b68dc2495afbc25b36217cc6e4167b2cf3f28a46ef1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "vehicleType",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "multiplier",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogMultiplierSet",
+          "type": "event",
+          "signature": "0x5e168e70d5925560e1407b68dc2495afbc25b36217cc6e4167b2cf3f28a46ef1"
+        },
+        "0xe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "tollBooth",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothAdded",
+          "type": "event",
+          "signature": "0xe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d"
+        },
+        "0x5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe89678": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "tollBooth",
+              "type": "address"
+            }
+          ],
+          "name": "LogTollBoothRemoved",
+          "type": "event",
+          "signature": "0x5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe89678"
+        },
+        "0xfa53ebd539f52eb4ef352ffacb2f8f5f8080cd8bb7ebb2f1acab3e1ce4bd65cb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogDepositSet",
+          "type": "event",
+          "signature": "0xfa53ebd539f52eb4ef352ffacb2f8f5f8080cd8bb7ebb2f1acab3e1ce4bd65cb"
+        },
+        "0xae0f86d9801b0bd39a2ce25d9fd1f202f2fd22e80150be4a99adb0275a635d6c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_newPausedState",
+              "type": "bool"
+            }
+          ],
+          "name": "LogPausedSet",
+          "type": "event",
+          "signature": "0xae0f86d9801b0bd39a2ce25d9fd1f202f2fd22e80150be4a99adb0275a635d6c"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event",
+          "signature": "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb"
+        }
+      },
+      "links": {},
+      "address": "0x60e5E1fe98c7dA100BD9EAA196f2c8347c3020CA",
+      "transactionHash": "0xda77cfaea06e4eadcb76550a0fa034d53003519c290fe7be5269b1e13baaf272"
     }
   },
   "schemaVersion": "3.0.0-beta.2",
-  "updatedAt": "2019-06-08T15:21:32.068Z",
+  "updatedAt": "2019-06-14T20:19:00.959Z",
   "devdoc": {
     "methods": {}
   },

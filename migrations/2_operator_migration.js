@@ -14,6 +14,6 @@ module.exports = (deployer, network, accounts) => deployer.then(async() => {
 	console.log('op', op)
 	await op.setPaused(false, { from: operatorOwner })
 	
-	await deployer.deploy(TollBoothOperator, true, 100, accounts[1])
+	await deployer.deploy(TollBoothOperator, false, 100, accounts[1])
 })
 
