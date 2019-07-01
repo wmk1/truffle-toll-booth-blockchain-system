@@ -20792,10 +20792,22 @@
       "links": {},
       "address": "0x60e5E1fe98c7dA100BD9EAA196f2c8347c3020CA",
       "transactionHash": "0xda77cfaea06e4eadcb76550a0fa034d53003519c290fe7be5269b1e13baaf272"
+    },
+    "1561985912942": {
+      "events": {},
+      "links": {},
+      "address": "0x00508c40826134b1857f7f95d6fDe3E4D51CF0A9",
+      "transactionHash": "0x43b2e0302ef31795379e5975ee2e5af4dea3188e6d6428aa01701e6fa4be8198"
+    },
+    "1561994042308": {
+      "events": {},
+      "links": {},
+      "address": "0x45A65F9E963cae08c2fE5e34F6F0d19Ed2cF4a6c",
+      "transactionHash": "0x3277c2e3ec80ff2ad85af75e9b47513785aca63c954b00a9d4e2e95332714dca"
     }
   },
   "schemaVersion": "3.0.0-beta.2",
-  "updatedAt": "2019-06-14T20:19:00.959Z",
+  "updatedAt": "2019-07-01T15:39:27.021Z",
   "devdoc": {
     "methods": {}
   },

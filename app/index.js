@@ -1,4 +1,4 @@
-  import Web3 from "web3"
+import Web3 from "web3"
 import contract from "truffle-contract"
 import toBytes32 from './utils/toBytes32'
 
@@ -44,7 +44,7 @@ const App = {
     let vehicleType = parseInt(document.getElementById("vehicleType").value)
     let recipient = document.getElementById("address").value
     App.setStatus("Changing vehicle type...")
-    const result = await App.regulator.setVehicleType(recipient, vehicleType, {
+    await App.regulator.setVehicleType(recipient, vehicleType, {
       from: App.accounts[0]
     })    
     App.setStatus('Changed vehicle type to ' + vehicleType + ' for recipient: ' + recipient)
@@ -55,11 +55,9 @@ const App = {
     const entryBooth = document.getElementById('entryBooth').value
     const exitBooth = document.getElementById('exitBooth').value
     const amount = parseInt(document.getElementById('routePriceNewValue').value)
-
-    const request = await App.tollBoothOperator.setRoutePrice(entryBooth, exitBooth, amount, {
+    await App.tollBoothOperator.setRoutePrice(entryBooth, exitBooth, amount, {
       from: App.accounts[1]
     })
-    console.log('request in function', request.logs)
     App.setStatus('Route price changed to ' + amount + ' for route from ' + entryBooth + ' to ' + exitBooth)
   },
 
@@ -67,16 +65,13 @@ const App = {
     const individualVehicleAddress = document.getElementById('individualVehicleAddress').value
     const addressHashed = await toBytes32(individualVehicleAddress)
     console.log('address hashed', addressHashed)
-    const request = await App.tollBoothOperator.reportExitRoad(addressHashed, {
+    await App.tollBoothOperator.reportExitRoad(addressHashed, {
       from: App.accounts[0]
     })
-    console.log('report vehicle exit', request)
     App.setStatus("Vehicle " + individualVehicleAddress + " exited from road successfully ")
   },
 
   depositWeis: async() => {
-    const depositWeis = parseInt(document.getElementById('depositedWeis').value)
-
     await App.tollBoothOperator.setDeposit(deposit, {
       from: App.accounts[0]
     })
@@ -93,9 +88,6 @@ const App = {
           vehicleType: data.returnValues.vehicleType
         })
       })
-      console.log('events after vehicle set', events)
-      
-      console.log('vehicles array', App.vehicles)
   },
 
   createNewOperator: async() => {
@@ -111,18 +103,14 @@ const App = {
     events.map(data => {
       console.log('data inside creating operator', data)
       $(document).ready(function() {
-        
-        // var lastRow = $('#operators tbody tr:last').html()
-         //alert(lastRow);
-         //$('#operators tbody').append('<tr>' + lastRow + '</tr>')
-         //$('#operators tbody tr:last input').val(data.returnValues.newOperator)
+      
          $("#operators").find('tbody').append("<tr>")
-         .append("<td>" + data.returnValues.newOperator + "</td>")                                               
-         .append("<td>" + data.returnValues.depositWeis + "</td>")
          .append("<td>" + data.returnValues.owner + "</td>")                                               
+         .append("<td>" + data.returnValues.depositWeis + "</td>")
+         .append("<td>" + data.returnValues.newOperator + "</td>")                                               
          .append("</tr>")
      })
-      let result = App.operators.push({
+      App.operators.push({
         newOperator: data.returnValues.newOperator,
         depositWeis: data.returnValues.depositWeis,
         owner: data.returnValues.owner
@@ -159,8 +147,6 @@ const App = {
     status.innerHTML = message
   },
 } 
-
-
 
 window.App = App
 
